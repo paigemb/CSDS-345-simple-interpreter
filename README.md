@@ -28,13 +28,16 @@ while statement	(while conditional body-statement)
 
 
 Your Interpreter Program
+
 You should write a function called interpret that takes a filename, calls parser with the filename, evaluates the syntax tree returned by parser, and returns the proper value. You are to maintain a state for the variables and return an error message if the user attempts to use a variable before it is declared. You can use the Scheme function (error ...) to return the error.
 
 The State
+
 Your state needs to store binding pairs, but the exact implementation is up to you. I recommend either a list of binding pairs (for example: ((x 5) (y 12) ...) ), or two lists, one with the variables and one with the values (for example: ((x y ...) (5 12 ...))). The first option will be simpler to program, but the second will be more easily adapted for an object-oriented language at the end of the course. The exact way you decide to implement looking up a binding, creating a new binding, or updating an existing binding is up to you. It is not essential that you be efficient here, just do something that works. With such a simple language, an efficient state is unneeded.
 
 What you do have to do is use abstraction to separate your state from the rest of your interpreter. As we increase the number of language features we have in future parts of the project, we will need to change how the state is implemented. If you correctly use abstraction, you will be able to redesign the state without changing the implementation of your interpreter. In this case, that means that the interpreter does not know about the structure of the state. Instead, you have generic functions that the interpreter can call to manipulate the state.
 
 Returning a Value
+
 Your interpreter needs to return the proper value.  How you achieve this is up to you, and we will later learn the proper way to handle the return.  A simple solution that is sufficient for this project is to have a special variable called return in the state that you assign to the return value.  When you are done interpreting the program your code can then lookup return in the state, get, and return that value.
 
